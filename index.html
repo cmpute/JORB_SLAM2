@@ -1,5 +1,100 @@
-<html>
+<html lang="en">
+	<head>
+		<title>Multi-Agent ORB-SLAM</title>
+		<meta charset="utf-8">
+		<style>
+			body {
+				font-family: Tahoma, Geneva, sans-serif;
+			}
+			
+			header {
+				background-color: #00368B;
+				padding: 30px;
+				text-align: center;
+				font-size: 30px;
+				color: #FFFFFF;
+			}
+			
+			header p {
+				font-size: 16px;
+			}
+			
+			nav {
+				float: left;
+				width: 30%;
+				max-width: 200px;
+				height: 100%;
+				background-color: #CCDFFF;
+				padding: 20px;
+			}
+			
+			nav ul {
+				list-style-type: none;
+				padding: 0;
+			}
+			
+			article {
+				float: left;
+				padding: 20px;
+				width: 70%;
+				background-color: #FFFFFF;
+			}
+			
+			@media (max-width: 600px) {
+				nav, article {
+					width: 100%;
+					height: auto;
+				}
+			}
+		</style>
+	</head>
+
 	<body>
-		<h1>Multi-Agent ORB-SLAM</h1>
+		<header>
+			<h1>Multi-Agent ORB-SLAM</h1>
+			<div>
+				<p>NAVARCH 568 Mobile Robotics</p>
+				<p>University of Michigan</p>
+				<p>Winter 2019</p>
+			</div>
+		</header>
+		
+		<section>
+			<nav>
+				<ul>
+					<li><a href="#team">Meet the Team</a></li>
+					<li><a href="#orbslam">ORB-SLAM</a></li>
+					<li><a href="#multiagent">Multi-Agent ORB-SLAM</a></li>
+					<li><a href="#datasets">Datasets</a></li>
+				</ul>
+			</nav>
+		</section>
+		
+		
+		<article>
+			<!-------------------- TEAM ------------------------->
+			<h2 id="team">Meet the Team</h2>
+			<p>Kaustav Chakraborty | Martin Deegan | Purva Kulkarni | Christine Searle | Yuanxin Zhong</p>
+
+			<!-------------------- OVERVIEW -------------------->
+			<h2 id="orbslam">ORB-SLAM</h2>
+			<p>Open source implementation of pose landmark graph SLAM</p>
+			<p>OpenCV camera vision support</p>
+			
+			<h2 id="multiagent">Multi-Agent ORB-SLAM</h2>
+			<img src="images/wall-e-eve-pixar.jpg" alt="Two robots from the movie Wall-E holding hands" width="776" height="436" >
+			<p>Two are better than one, because they have a good return for their labor: if either of them falls down, one can help the other up.</p>
+			<p>Two robots exploring can cover the same space in half the time!</p>
+			<p>If the two robots can identify each other, they can use recognition of the other robot as an additional opportunity for loop closure.
+			<p>Requires combining map data from ORB-SLAM running on each robot</p>
+
+			<!-------------------- DATASETS ----------------->
+			<h2 id="datasets">Datasets</h2>
+			<p>Initial testing was done on the KITTI dataset<p>
+			<p>A custom dataset with tagged "robots" was also created from the EWRE building at the University of Michigan</p>
+			
+			<!-------------------- CODE ----------------->
+
+		</article>
 	</body>
 </html>
