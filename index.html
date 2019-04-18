@@ -2,14 +2,16 @@
 	<head>
 		<title>Multi-Agent ORB-SLAM</title>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<style>
 			body {
 				font-family: Tahoma, Geneva, sans-serif;
+				margin: 0px;
 			}
 			
 			header {
 				background-color: #00368B;
-				padding: 30px;
+				padding: 25px;
 				text-align: center;
 				font-size: 30px;
 				color: #FFFFFF;
@@ -20,17 +22,21 @@
 			}
 			
 			nav {
+				box-sizing: border-box;
 				float: left;
 				width: 30%;
-				max-width: 200px;
+				max-width: 175px;
 				height: 100%;
 				background-color: #CCDFFF;
 				padding: 20px;
 			}
 			
-			nav ul {
-				list-style-type: none;
-				padding: 0;
+			nav td {
+				padding: 10px;
+			}
+			
+			nav a {
+				text-decoration: none;
 			}
 			
 			article {
@@ -38,6 +44,10 @@
 				padding: 20px;
 				width: 70%;
 				background-color: #FFFFFF;
+			}
+			
+			p.italic {
+				font-style: italic;
 			}
 			
 			@media (max-width: 600px) {
@@ -61,12 +71,15 @@
 		
 		<section>
 			<nav>
-				<ul>
-					<li><a href="#team">Meet the Team</a></li>
-					<li><a href="#orbslam">ORB-SLAM</a></li>
-					<li><a href="#multiagent">Multi-Agent ORB-SLAM</a></li>
-					<li><a href="#datasets">Datasets</a></li>
-				</ul>
+				<table>
+					<tr><td><a href="#team">Meet the Team</a></td></tr>
+					<tr><td><a href="#orbslam">ORB-SLAM</a></td></tr>
+					<tr><td><a href="#multiagent">Multi-Agent ORB-SLAM</a></td></tr>
+					<tr><td><a href="#datasets">Datasets</a></td></tr>
+					<tr><td><a href="#code">Code</a></td></tr>
+					<tr><td><a href="#results">Results</a></td></tr>
+					<tr><td><a href="#future">Future Work</a></td></tr>
+				</table>
 			</nav>
 		</section>
 		
@@ -75,6 +88,7 @@
 			<!-------------------- TEAM ------------------------->
 			<h2 id="team">Meet the Team</h2>
 			<p>Kaustav Chakraborty | Martin Deegan | Purva Kulkarni | Christine Searle | Yuanxin Zhong</p>
+			<hr />
 
 			<!-------------------- OVERVIEW -------------------->
 			<h2 id="orbslam">ORB-SLAM</h2>
@@ -83,17 +97,33 @@
 			
 			<h2 id="multiagent">Multi-Agent ORB-SLAM</h2>
 			<img src="images/wall-e-eve-pixar.jpg" alt="Two robots from the movie Wall-E holding hands" width="776" height="436" >
-			<p>Two are better than one, because they have a good return for their labor: if either of them falls down, one can help the other up.</p>
-			<p>Two robots exploring can cover the same space in half the time!</p>
+			<p class="italic">Two are better than one, because they have a good return for their labor: if either of them falls down, one can help the other up.</p>
+			<p>Two robots exploring can cover the same space in half the time.</p>
 			<p>If the two robots can identify each other, they can use recognition of the other robot as an additional opportunity for loop closure.
 			<p>Requires combining map data from ORB-SLAM running on each robot</p>
+
+			<hr />
 
 			<!-------------------- DATASETS ----------------->
 			<h2 id="datasets">Datasets</h2>
 			<p>Initial testing was done on the KITTI dataset<p>
-			<p>A custom dataset with tagged "robots" was also created from the EWRE building at the University of Michigan</p>
+			<img src="images/cameraSetup.jpg" alt="open laptop with a 6 by 6 April identification tag taped to the back of the lid.  An intel Realsense RGBD camera is velcroed on above the April tag" width="776" height="436" >
+			<p>A custom dataset with tagged "robots" was also created from the second floor of the EECS building at the University of Michigan</p>
+			
+			<hr />
 			
 			<!-------------------- CODE ----------------->
+			<h2 id="code">Modifications to ORB-SLAM</h2>
+			
+			<hr />
+			
+			<!-------------------- RESULTS ------------------>
+			<h2 id="results">Results</h2>
+			
+			<hr />
+			
+			<!-------------------- FUTURE PROJECTS ----------------->
+			<h2 id="future">Future Work</h2>
 
 		</article>
 	</body>
