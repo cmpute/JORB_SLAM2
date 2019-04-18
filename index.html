@@ -59,6 +59,21 @@
 				background-color: #FFFFFF;
 			}
 			
+			article td {
+				padding-left: 15px;
+				padding-right: 15px;
+				padding-top: 5px;
+				padding-bottom: 5px;
+			}
+			
+			article td.name {
+				text-align: right;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
 			p.italic {
 				font-style: italic;
 			}
@@ -104,13 +119,23 @@
 		<article id="main">
 			<!-------------------- TEAM ------------------------->
 			<h2 id="team">Meet the Team</h2>
-			<p>Kaustav Chakraborty | Martin Deegan | Purva Kulkarni | Christine Searle | Yuanxin Zhong</p>
+			<img src="images/team.jpg" alt="Five people sitting around a shared workstation" width="776" >
+			<p class="italic">From left to right:</p>
+			<table>
+				<tr><td class="name">Yuanxin Zhong</td><td>Mechanical Engineering, Automotive</td></tr>
+				<tr><td class="name">Martin Deegan</td><td>Computer Science and Mathematics</td></tr>
+				<tr><td class="name">Kaustav Chakraborty</td><td>Robotics</td></tr>
+				<tr><td class="name">Purva Kulkarni</td><td>Electrical and Computer Engineering, Embedded Systems</td></tr>
+				<tr><td class="name">Christine Searle</td><td>Robotics</td></tr>
+			</table>
+			<p></p>
+			
 			<hr />
 
 			<!-------------------- OVERVIEW -------------------->
 			<h2 id="orbslam">ORB-SLAM</h2>
 			<p><a href="http://webdiis.unizar.es/~raulmur/orbslam/" target="_blank">ORB-SLAM</a> is an open source implementation of pose landmark graph SLAM.  It supports camera input through the <a href="https://opencv.org/" target="_blank">OpenCV</a> library.</p>
-			<p>Our multi-agent system is an enhancement of ORB-SLAM2.</p>
+			<p>Our multi-agent system is an enhancement of the second generation of ORB-SLAM, ORB-SLAM2.</p>
 			
 			<hr />
 			
@@ -129,7 +154,7 @@
 			<!-------------------- DATASETS ----------------->
 			<h2 id="datasets">Datasets</h2>
 			<img src="images/000000.png" alt="black and white image of a tree-lined street from a car's perspective" target="_blank" width="776" >
-			<p>In phase one, initial testing was done on the stereo <a href="http://www.cvlibs.net/datasets/kitti/" target="_blank">KITTI dataset</a> taken in Karlsruhe, Germany.<p>
+			<p>In phase one, initial testing was done on the stereo <a href="http://www.cvlibs.net/datasets/kitti/" target="_blank">KITTI dataset</a> taken in Karlsruhe, Germany.  To simulate two simultaneously running clients, we split the grayscale 00 stereo portion of the KITTI dataset in half, adjusting the timestamps on the second half to align with the first half.<p>
 			<img src="images/cameraSetup.jpg" alt="open laptop with a 6 by 6 April identification tag taped to the back of the lid.  An intel Realsense RGBD camera is velcroed on above the April tag" width="776" height="436" >
 			<p>In phase two, we created a custom dataset with April tagged "robots" on the second floor of the EECS building at the University of Michigan.</p>
 			
@@ -137,8 +162,7 @@
 			
 			<!-------------------- CODE ----------------->
 			<h2 id="code">Modifications to ORB-SLAM</h2>
-			
-			
+			<p>To simulate running two clients, we ran two simultaneous instances of ORB-SLAM, each with half of the 00 stereo portion of the KITTI dataset.  Each client instance of ORB-SLAM spawns three threads: tracking, mapping, and loop closing.  We added a fourth thread to simulate a server merging data from the two client instances.  This fourth server detected and performed loop closures on the combined data of the two clients, creating a larger combined map of the environment.</p>
 			
 			<p>The complete code for our implementation of multi-agent ORB-SLAM can be found <a href="https://github.com/um-mobrob-t12-w19" target="_blank">here</a> on Github.</p>
 			
