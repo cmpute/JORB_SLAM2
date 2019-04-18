@@ -145,7 +145,7 @@
 
 			<!-------------------- OVERVIEW -------------------->
 			<h2 id="orbslam">ORB-SLAM</h2>
-			<p><a href="http://webdiis.unizar.es/~raulmur/orbslam/" target="_blank">ORB-SLAM</a> is an open source implementation of pose landmark graph SLAM.  It supports camera input through the <a href="https://opencv.org/" target="_blank">OpenCV</a> library.</p>
+			<p><a href="http://webdiis.unizar.es/~raulmur/orbslam/" target="_blank">ORB-SLAM</a> is an open source implementation of pose landmark graph SLAM.  It supports monocular, stereo, and RGBD camera input through the <a href="https://opencv.org/" target="_blank">OpenCV</a> library.</p>
 			<p>Our multi-agent system is an enhancement of the second generation of ORB-SLAM, ORB-SLAM2.</p>
 			<img src="images/orbslam2.PNG" alt="Flow chart of the ORB-SLAM2 implementation" width="650" >
 			<p>Diagram of the ORB-SLAM2 implementation from Mur-Artal and Tardos' 2017 paper, "ORB-SLAM2: an Open-Source SLAM System for Monocular, Stereo and RGB-D Cameras".</p>
@@ -160,7 +160,7 @@
 				<li>Two robots exploring can cover the same space in half the time.</li>
 				<li>If the two robots can identify each other, they can use recognition of the other robot as an additional opportunity for loop closure.  We make use of Ed Olson's popular <a href="https://april.eecs.umich.edu/software/apriltag" target="_blank">April tag</a> system for robot identification.</li>
 			</ol>
-			<p>However, a multi-agent system requires a mechanism for combining map data from the ORB-SLAM implementation running on each robot.  We utilize a client-server architecture to do this fusion.</p>
+			<p>However, a multi-agent system requires a mechanism for combining map data from the ORB-SLAM implementation running on each robot.  While future implementations may utilize a client-server architecture to do this fusion, here we simply create a separate server thread with direct access to the client threads.</p>
 
 			<hr />
 
@@ -183,7 +183,7 @@
 			
 			<!-------------------- CODE ----------------->
 			<h2 id="code">Modifications to ORB-SLAM</h2>
-			<p>To simulate running two clients, we ran two simultaneous instances of ORB-SLAM, each with half of the 00 stereo portion of the KITTI dataset.  Each client instance of ORB-SLAM spawns three threads: tracking, mapping, and loop closing.  We added a fourth thread to simulate a server merging data from the two client instances.  This fourth server detected and performed loop closures on the combined data of the two clients, creating a larger combined map of the environment.</p>
+			<p>To simulate running two clients, we ran two simultaneous instances of ORB-SLAM, each with an adjustable sized portion of the 00 stereo portion of the KITTI dataset.  Each client instance of ORB-SLAM spawns three threads: tracking, mapping, and loop closing.  We added a fourth thread to simulate a server merging data from the two client instances.  This fourth server detected and performed loop closures on the combined data of the two clients, creating a larger combined map of the environment.</p>
 			
 			<p>The complete code for our implementation of multi-agent ORB-SLAM can be found <a href="https://github.com/um-mobrob-t12-w19" target="_blank">here</a> on Github.</p>
 			
@@ -206,6 +206,13 @@
 			<img src="images/aprilslam4.png" alt="" height="200" >
 			<p>Blue lines indicate keyframes; green lines indicate loop closures within a client; red lines indicate loop closures from one client to the other.</p>
 			
+			<h3>See it in Action</h3>
+			<video width="776" controls>
+				<source src="images/EECSCorbslamFinal.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+			
+			<p></p>
 			
 			<hr />
 			
