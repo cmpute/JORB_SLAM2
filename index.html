@@ -40,6 +40,18 @@
 				text-decoration: none;
 			}
 			
+			.sticky {
+				position: fixed;
+				top: 0;
+				width: 610px;
+				height: 100%;
+			}
+			
+			.fixed {
+				position: relative;
+				left: 175px;
+			}
+			
 			article {
 				float: left;
 				padding: 20px;
@@ -58,6 +70,7 @@
 				}
 			}
 		</style>
+
 	</head>
 
 	<body>
@@ -70,23 +83,25 @@
 			</div>
 		</header>
 		
-		<section>
-			<nav>
-				<table>
-					<tr><td><a href="#team">Meet the Team</a></td></tr>
-					<tr><td><a href="#orbslam">ORB-SLAM</a></td></tr>
-					<tr><td><a href="#multiagent">Multi-Agent ORB-SLAM</a></td></tr>
-					<tr><td><a href="#datasets">Datasets</a></td></tr>
-					<tr><td><a href="#code">Code</a></td></tr>
-					<tr><td><a href="#results">Results</a></td></tr>
-					<tr><td><a href="#future">Future Work</a></td></tr>
-					<tr><td><a href="docs/report.pdf" target="_blank">Report</a></td></tr>
-				</table>
-			</nav>
+		<section id="navbar">
+			<!--<div id="navbar">-->
+				<nav>
+					<table>
+						<tr><td><a href="#team">Meet the Team</a></td></tr>
+						<tr><td><a href="#orbslam">ORB-SLAM</a></td></tr>
+						<tr><td><a href="#multiagent">Multi-Agent ORB-SLAM</a></td></tr>
+						<tr><td><a href="#datasets">Datasets</a></td></tr>
+						<tr><td><a href="#code">Code</a></td></tr>
+						<tr><td><a href="#results">Results</a></td></tr>
+						<tr><td><a href="#future">Future Work</a></td></tr>
+						<tr><td><a href="docs/report.pdf" target="_blank">Report</a></td></tr>
+					</table>
+				</nav>
+			<!--</div>-->
 		</section>
 		
 		
-		<article>
+		<article id="main">
 			<!-------------------- TEAM ------------------------->
 			<h2 id="team">Meet the Team</h2>
 			<p>Kaustav Chakraborty | Martin Deegan | Purva Kulkarni | Christine Searle | Yuanxin Zhong</p>
@@ -116,7 +131,7 @@
 			<img src="images/000000.png" alt="black and white image of a tree-lined street from a car's perspective" target="_blank" width="776" >
 			<p>In phase one, initial testing was done on the stereo <a href="http://www.cvlibs.net/datasets/kitti/" target="_blank">KITTI dataset</a> taken in Karlsruhe, Germany.<p>
 			<img src="images/cameraSetup.jpg" alt="open laptop with a 6 by 6 April identification tag taped to the back of the lid.  An intel Realsense RGBD camera is velcroed on above the April tag" width="776" height="436" >
-			<p>In phase two, we created a custom dataset with tagged "robots" on the second floor of the EECS building at the University of Michigan</p>
+			<p>In phase two, we created a custom dataset with April tagged "robots" on the second floor of the EECS building at the University of Michigan.</p>
 			
 			<hr />
 			
@@ -138,5 +153,23 @@
 			<h2 id="future">Future Work</h2>
 
 		</article>
+		
+		<script>
+			window.onscroll = function() {addStickyNav()};
+			
+			var navbar = document.getElementById("navbar");
+			var main = document.getElementById("main");
+			var sticky = navbar.offsetTop;
+			
+			function addStickyNav() {
+				if (window.pageYOffset >= sticky) {
+					navbar.classList.add("sticky");
+					main.classList.add("fixed");
+				} else {
+					navbar.classList.remove("sticky");
+					main.classList.remove("fixed");
+				}
+			}
+		</script>
 	</body>
 </html>
