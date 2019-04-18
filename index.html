@@ -79,6 +79,7 @@
 					<tr><td><a href="#code">Code</a></td></tr>
 					<tr><td><a href="#results">Results</a></td></tr>
 					<tr><td><a href="#future">Future Work</a></td></tr>
+					<tr><td><a href="docs/report.pdf" target="_blank">Report</a></td></tr>
 				</table>
 			</nav>
 		</section>
@@ -95,20 +96,26 @@
 			<p>Open source implementation of pose landmark graph SLAM</p>
 			<p>OpenCV camera vision support</p>
 			
+			<hr />
+			
 			<h2 id="multiagent">Multi-Agent ORB-SLAM</h2>
 			<img src="images/wall-e-eve-pixar.jpg" alt="Two robots from the movie Wall-E holding hands" width="776" height="436" >
 			<p class="italic">Two are better than one, because they have a good return for their labor: if either of them falls down, one can help the other up.</p>
-			<p>Two robots exploring can cover the same space in half the time.</p>
-			<p>If the two robots can identify each other, they can use recognition of the other robot as an additional opportunity for loop closure.
-			<p>Requires combining map data from ORB-SLAM running on each robot</p>
+			<p>There are two major benefits to a multi-agent SLAM system:</p>
+			<ol>
+				<li>Two robots exploring can cover the same space in half the time.</li>
+				<li>If the two robots can identify each other, they can use recognition of the other robot as an additional opportunity for loop closure.  We make use of Ed Olson's popular <a href="https://april.eecs.umich.edu/software/apriltag" target="_blank">April tag</a> system for robot identification.</li>
+			</ol>
+			<p>However, a multi-agent system requires a mechanism for combining map data from the ORB-SLAM implementation running on each robot.  We utilize a client-server architecture to do this fusion.</p>
 
 			<hr />
 
 			<!-------------------- DATASETS ----------------->
 			<h2 id="datasets">Datasets</h2>
-			<p>Initial testing was done on the KITTI dataset<p>
+			<img src="images/000000.png" alt="black and white image of a tree-lined street from a car's perspective" target="_blank" width="776" >
+			<p>In phase one, initial testing was done on the stereo <a href="http://www.cvlibs.net/datasets/kitti/" target="_blank">KITTI dataset</a> taken in Karlsruhe, Germany.<p>
 			<img src="images/cameraSetup.jpg" alt="open laptop with a 6 by 6 April identification tag taped to the back of the lid.  An intel Realsense RGBD camera is velcroed on above the April tag" width="776" height="436" >
-			<p>A custom dataset with tagged "robots" was also created from the second floor of the EECS building at the University of Michigan</p>
+			<p>In phase two, we created a custom dataset with tagged "robots" on the second floor of the EECS building at the University of Michigan</p>
 			
 			<hr />
 			
