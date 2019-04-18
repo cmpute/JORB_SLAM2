@@ -77,7 +77,15 @@
 			p.italic {
 				font-style: italic;
 			}
+			<!--
+			.column {
+				flex: 50%;
+			}
 			
+			.row {
+				display: flex;
+			}
+			-->
 			@media (max-width: 600px) {
 				nav, article {
 					width: 100%;
@@ -153,10 +161,18 @@
 
 			<!-------------------- DATASETS ----------------->
 			<h2 id="datasets">Datasets</h2>
-			<img src="images/000000.png" alt="black and white image of a tree-lined street from a car's perspective" target="_blank" width="776" >
+			<img src="images/000000.png" alt="black and white image of a tree-lined street from a car's perspective" width="776" >
+			
 			<p>In phase one, initial testing was done on the stereo <a href="http://www.cvlibs.net/datasets/kitti/" target="_blank">KITTI dataset</a> taken in Karlsruhe, Germany.  To simulate two simultaneously running clients, we split the grayscale 00 stereo portion of the KITTI dataset in half, adjusting the timestamps on the second half to align with the first half.<p>
-			<img src="images/cameraSetup.jpg" alt="open laptop with a 6 by 6 April identification tag taped to the back of the lid.  An intel Realsense RGBD camera is velcroed on above the April tag" width="776" height="436" >
+			
+			<img src="images/dataCollection.jpg" alt="man holding open laptop.  Laptop lid has a 6 by 6 April tag and an Intel RealSense RGBD camera taped to it." height="270" >
+			<img src="images/roboRecog.jpg" alt="three men stand in a hallway.  Two are facing each other holding open laptops with April tags taped to the lids" height="270" >
+			
 			<p>In phase two, we created a custom dataset with April tagged "robots" on the second floor of the EECS building at the University of Michigan.</p>
+			
+			<img src="images/cameraSetup.jpg" alt="open laptop with a 6 by 6 April identification tag taped to the back of the lid.  An intel Realsense RGBD camera is velcroed on above the April tag" width="776" height="436" >
+			
+			<p></p>
 			
 			<hr />
 			
@@ -171,10 +187,30 @@
 			<!-------------------- RESULTS ------------------>
 			<h2 id="results">Results</h2>
 			
+			<h3>Phase One: KITTI Dataset</h3>
+			<img src="images/loopClosure.png" alt="pointilism sketch of a road, with a blue line down the center" width="776" >
+			<p>This image shows a successful loop closure point, with the two viewings forming the loop closure coming from different data tracks ("clients").</p>
+			<img src="images/fullKitti.png" alt="pointilism map" width="776" >
+			<p>This is a larger portion of the server thread generated map.</p>
+			
+			<h3>Phase Two: Custom Dataset</h3>
+			
 			<hr />
 			
 			<!-------------------- FUTURE PROJECTS ----------------->
 			<h2 id="future">Future Work</h2>
+			
+			<h4>Real-time SLAM</h4>
+			<p>This implementation gathers all data from both clients before merging the two maps into one.  While this is acceptable for many applications, it is typically more useful to build the server map incrementally at the same time as the client maps.</p>
+			
+			<h4>True Client-Server Separation</h4>
+			<p>Running client threads and a server thread to mimic the separation of physical agents and a centralized server ignores several aspects of difficulty.  Physical separation places limitations on data sharing between the clients and server, largely in how much data can be sent within a given timestep.  This introduction of communication protocols raises the potential for communication failures.  A robust multi-agent system requires a way to compensate for an unexpected loss of communication.</p>
+			
+			<h4>Leveraging the Enhanced Server Map</h4>
+			<p>The current implementation only builds the server map after all client data has been collected.  An incremental multi-agent system, in addition to building the server map in real time, should send data back to the clients to improve their maps.  In exploration situations, client knowledge of the larger picture is critical for deciding what action to take next.</p>
+			
+			<h4>Moving Past April Tags</h4>
+			<p>While extremely useful, as proven by their widespread adoption, April tags are an artificial handicap to robot recognition.  A more elegant solution, a solution better able to blend in to the natural world could use learned features of the robotics agents in the system to recognize the agents instead.</p>
 
 		</article>
 		
